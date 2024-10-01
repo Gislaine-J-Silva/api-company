@@ -1,4 +1,4 @@
-const transporter = require('../config/emailConfig')
+const mailService = require('../config/emailConfig')
 
 async function sendEmail(req, res){
     const { name, email, phone, areaOfInterest, monetaryPretension, description } = req.body
@@ -12,7 +12,7 @@ async function sendEmail(req, res){
     }
 
     try {
-        await transporter.sendMail({
+        await mailService.sendMail({
             from: `"Pedido de Orçamento" <${process.env.EMAIL_USER}>`,
             to: process.env.EMAIL_TO,
             subject: 'Orçamento de Cliente',

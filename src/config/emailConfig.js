@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 
-const transporter = nodemailer.createTransport({
+const mailService = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: parseInt(process.env.EMAIL_PORT),
     secure: false,
@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-transporter.verify((error, success) => {
+mailService.verify((error, success) => {
     if (error) {
         console.error('Erro ao verificar o transporter:', error);
     } else {
@@ -18,4 +18,4 @@ transporter.verify((error, success) => {
     }
 });
 
-module.exports = transporter
+module.exports = mailService
